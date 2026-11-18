@@ -37,6 +37,10 @@ const Contact = () => {
     setIsSubmitting(true);
     setStatus({ type: "", message: "" });
 
+    // 15-second timeout to handle slow responses from FormSubmit
+    const controller = new AbortController();
+    const timeoutId = setTimeout(() => controller.abort(), 15000);
+
     try {
       const response = await fetch(
         `https://formsubmit.co/ajax/${CONTACT_EMAIL}`,
@@ -46,10 +50,12 @@ const Contact = () => {
             "Content-Type": "application/json",
             Accept: "application/json",
           },
+          signal: controller.signal,
           body: JSON.stringify({
             _subject: `Portfolio Contact: ${formData.subject}`,
             _template: "table",
             _captcha: "false",
+            _url: window.location.href, // <-- Added: required by FormSubmit
             Name: formData.name,
             Email: formData.email,
             Subject: formData.subject,
@@ -57,6 +63,8 @@ const Contact = () => {
           }),
         },
       );
+
+      clearTimeout(timeoutId);
 
       const result = await response.json();
 
@@ -82,15 +90,22 @@ const Contact = () => {
         message: "",
       });
     } catch (error) {
-      console.error("Contact form error:", error);
-
-      setStatus({
-        type: "error",
-        message:
-          error.message ||
-          "Something went wrong. Please email me directly instead.",
-      });
+      if (error.name === "AbortError") {
+        setStatus({
+          type: "error",
+          message: "The request timed out. Please try again.",
+        });
+      } else {
+        console.error("Contact form error:", error);
+        setStatus({
+          type: "error",
+          message:
+            error.message ||
+            "Something went wrong. Please email me directly instead.",
+        });
+      }
     } finally {
+      clearTimeout(timeoutId);
       setIsSubmitting(false);
     }
   };
