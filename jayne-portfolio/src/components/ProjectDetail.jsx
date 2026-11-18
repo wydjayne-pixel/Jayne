@@ -2,7 +2,6 @@ import React from "react";
 import { useParams, Link } from "react-router-dom";
 import { ArrowLeft } from "lucide-react";
 
-// Generate image arrays automatically based on your folder structure
 const projectData = {
   "tattoo-website": {
     title: "Tattoo Shop Website",
@@ -46,11 +45,9 @@ const ProjectDetail = () => {
     );
   }
 
-  // Parehong naka-true masonry layout ang Game Dev at Graphic Design
   const useMasonry =
     projectId === "interactive-game" || projectId === "event-promotions";
 
-  // Split images into 3 columns for the equal-bottom layout (Tattoo only)
   const columns = [[], [], []];
   project.images.forEach((img, index) => {
     columns[index % 3].push(img);
@@ -83,7 +80,6 @@ const ProjectDetail = () => {
 
         {/* GALLERY SECTION */}
         {useMasonry ? (
-          /* TRUE MASONRY LAYOUT (Game Development & Graphic Design) */
           <div className="columns-1 sm:columns-2 lg:columns-3 gap-4 space-y-4">
             {project.images.map((img, index) => (
               <div
@@ -100,7 +96,6 @@ const ProjectDetail = () => {
             ))}
           </div>
         ) : (
-          /* EQUAL BOTTOM ALIGNMENT MASONRY (Tattoo Website) */
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 items-stretch">
             {columns.map((col, colIndex) => (
               <div key={colIndex} className="flex flex-col gap-4 h-full">
