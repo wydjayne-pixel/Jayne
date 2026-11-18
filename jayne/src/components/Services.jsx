@@ -79,14 +79,14 @@ const Services = () => {
               return (
                 <div
                   key={service.id}
-                  className="group flex cursor-pointer items-center gap-5 transition-opacity hover:opacity-70"
+                  className="group flex cursor-pointer items-center gap-3 transition-opacity hover:opacity-70 sm:gap-5"
                 >
                   <Icon
                     size={26}
                     strokeWidth={1.5}
                     className="shrink-0 text-white transition-transform duration-300 group-hover:scale-110"
                   />
-                  <span className="whitespace-nowrap text-[11px] font-bold uppercase tracking-[0.1em] text-white">
+                  <span className="text-[10px] font-bold uppercase leading-tight tracking-[0.1em] text-white sm:text-[11px] lg:whitespace-nowrap">
                     {service.title}
                   </span>
                 </div>
@@ -96,7 +96,7 @@ const Services = () => {
 
           {/* RIGHT CONTENT CONTAINER */}
           <div className="rounded-[25px] border border-white/[0.025] bg-gradient-to-br from-[#1b1b1b] to-[#141414] p-[18px]">
-            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 h-full">
+            <div className="grid h-full grid-cols-1 gap-4 sm:grid-cols-2">
               {servicesData.map((service) => (
                 <div
                   key={service.id}
@@ -130,7 +130,7 @@ const Services = () => {
             className="group relative flex min-h-[190px] cursor-pointer flex-col justify-between rounded-[25px] border border-white/[0.025] bg-gradient-to-br from-[#1b1b1b] to-[#141414] p-5 transition hover:border-white/20 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#5b78ff]/50 sm:p-[22px]"
           >
             {/* Social Icons Pill */}
-            <div className="flex w-full items-center justify-center gap-4 rounded-full border border-white/[0.025] bg-[#1a1a1a] py-3 px-2">
+            <div className="flex w-full items-center justify-center gap-4 rounded-full border border-white/[0.025] bg-[#1a1a1a] px-2 py-3">
               <a
                 href="https://www.credly.com/users/louiez-jayne-julian"
                 target="_blank"

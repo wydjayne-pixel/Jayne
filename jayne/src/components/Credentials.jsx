@@ -65,30 +65,12 @@ const educationData = [
 ];
 
 const skillsData = [
-  {
-    name: "Web Design",
-    desc: "Responsive, modern, user-friendly.",
-  },
-  {
-    name: "UI/UX Design",
-    desc: "Intuitive, creative, accessible.",
-  },
-  {
-    name: "Game Design",
-    desc: "Interactive, engaging, imaginative.",
-  },
-  {
-    name: "Quality Assurance (QA)",
-    desc: "Detailed, reliable, functional.",
-  },
-  {
-    name: "Graphic Design",
-    desc: "Creative, expressive, visually appealing.",
-  },
-  {
-    name: "Content Creation",
-    desc: "Engaging, innovative, impactful.",
-  },
+  { name: "Web Design", desc: "Responsive, modern, user-friendly." },
+  { name: "UI/UX Design", desc: "Intuitive, creative, accessible." },
+  { name: "Game Design", desc: "Interactive, engaging, imaginative." },
+  { name: "Quality Assurance (QA)", desc: "Detailed, reliable, functional." },
+  { name: "Graphic Design", desc: "Creative, expressive, visually appealing." },
+  { name: "Content Creation", desc: "Engaging, innovative, impactful." },
 ];
 
 const certificationsData = [
@@ -137,7 +119,7 @@ const Credentials = () => {
 
         <div className="grid grid-cols-1 gap-8 lg:grid-cols-[320px_1fr] lg:gap-16">
           {/* Left Column - Sticky Profile Card */}
-          <div className="sticky top-12 self-start flex h-fit flex-col rounded-[25px] bg-gradient-to-br from-[#1b1b1b] to-[#141414] p-6 group transition duration-300">
+          <div className="group flex h-fit flex-col self-start rounded-[25px] bg-gradient-to-br from-[#1b1b1b] to-[#141414] p-6 transition duration-300 lg:sticky lg:top-12">
             {/* Profile Image - Grayscale to Color Hover */}
             <div className="relative mb-6 h-[280px] w-full overflow-hidden rounded-[20px] bg-gradient-to-br from-[#4665ef] to-[#67c9e8]">
               <img

@@ -27,8 +27,6 @@ body {
 
 /* ============================================================
    Page transition animations
-   Staggered fade + slide entrance applied to page sections
-   whenever a route component mounts (i.e. on navigation).
    ============================================================ */
 
 @keyframes page-slide-in {
@@ -48,12 +46,10 @@ body {
   animation: page-slide-in 600ms cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 
-/* Even children enter from the right */
 .page-transition > *:nth-child(even) {
   --page-slide-from: 20px;
 }
 
-/* Staggered timing — each child starts 100ms after the previous one */
 .page-transition > *:nth-child(1) {
   animation-delay: 0ms;
 }
@@ -77,6 +73,17 @@ body {
 }
 .page-transition > *:nth-child(n + 8) {
   animation-delay: 700ms;
+}
+
+/* Smaller slide distance on phones — keeps the entrance subtle
+   and avoids contributing to horizontal overflow. */
+@media (max-width: 640px) {
+  .page-transition > * {
+    --page-slide-from: -14px;
+  }
+  .page-transition > *:nth-child(even) {
+    --page-slide-from: 14px;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {

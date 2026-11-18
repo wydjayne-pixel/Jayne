@@ -1,5 +1,5 @@
 import React, { useRef } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import {
   ChevronLeft,
   ChevronRight,
@@ -55,6 +55,7 @@ const Sparkle = ({ className = "" }) => (
 
 const About = () => {
   const carouselRef = useRef(null);
+  const navigate = useNavigate();
 
   const scroll = (direction) => {
     if (!carouselRef.current) return;
@@ -157,7 +158,7 @@ const About = () => {
 
             <div
               ref={carouselRef}
-              className="experience-carousel grid grid-flow-col auto-cols-[calc(50%-8px)] gap-4 overflow-x-auto pb-2"
+              className="experience-carousel grid grid-flow-col auto-cols-[85%] gap-4 overflow-x-auto pb-2 sm:auto-cols-[calc(50%-8px)]"
               aria-label="Work experience carousel"
             >
               {experiences.map((experience, index) => (
