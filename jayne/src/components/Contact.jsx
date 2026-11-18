@@ -4,6 +4,7 @@ import { FaLinkedin, FaInstagram, FaFacebook } from "react-icons/fa";
 import { SiCredly } from "react-icons/si";
 
 const CONTACT_EMAIL = "louiezjayneljulian@gmail.com";
+const WEB3FORMS_ACCESS_KEY = "0076688d-8eee-4bb0-8d9a-6883e500e244";
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -37,42 +38,32 @@ const Contact = () => {
     setIsSubmitting(true);
     setStatus({ type: "", message: "" });
 
-    // 15-second timeout to handle slow responses from FormSubmit
     const controller = new AbortController();
     const timeoutId = setTimeout(() => controller.abort(), 15000);
 
     try {
-      const response = await fetch(
-        `https://formsubmit.co/ajax/${CONTACT_EMAIL}`,
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            Accept: "application/json",
-          },
-          signal: controller.signal,
-          body: JSON.stringify({
-            _subject: `Portfolio Contact: ${formData.subject}`,
-            _template: "table",
-            _captcha: "false",
-            _url: window.location.href, // <-- Added: required by FormSubmit
-            Name: formData.name,
-            Email: formData.email,
-            Subject: formData.subject,
-            Message: formData.message,
-          }),
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
         },
-      );
+        signal: controller.signal,
+        body: JSON.stringify({
+          access_key: WEB3FORMS_ACCESS_KEY,
+          from_name: "Louiez Jayne Portfolio",
+          subject: `Portfolio Contact: ${formData.subject}`,
+          name: formData.name,
+          email: formData.email,
+          message: formData.message,
+        }),
+      });
 
       clearTimeout(timeoutId);
 
       const result = await response.json();
 
-      if (
-        !response.ok ||
-        result.success === false ||
-        result.success === "false"
-      ) {
+      if (!response.ok || result.success === false) {
         throw new Error(
           result.message || "Your message could not be sent. Please try again.",
         );
