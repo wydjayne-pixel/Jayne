@@ -10,7 +10,6 @@ import {
 import { FaLinkedin } from "react-icons/fa";
 import { SiCredly } from "react-icons/si";
 
-// Sparkle heading decoration
 const Sparkle = ({ className = "" }) => (
   <svg
     viewBox="0 0 32 32"

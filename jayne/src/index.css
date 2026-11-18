@@ -25,10 +25,6 @@ body {
   scrollbar-width: none;
 }
 
-/* ============================================================
-   Page transition animations
-   ============================================================ */
-
 @keyframes page-slide-in {
   from {
     opacity: 0;
@@ -75,8 +71,6 @@ body {
   animation-delay: 700ms;
 }
 
-/* Smaller slide distance on phones — keeps the entrance subtle
-   and avoids contributing to horizontal overflow. */
 @media (max-width: 640px) {
   .page-transition > * {
     --page-slide-from: -14px;

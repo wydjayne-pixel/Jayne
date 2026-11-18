@@ -15,7 +15,6 @@ const projectData = {
     category: "GRAPHIC DESIGN",
     description:
       "A collection of visually striking promotional materials, posters, and social media graphics designed to drive engagement and attendance for various events.",
-    // Updated to 8 images (design-1 to design-8)
     images: Array.from({ length: 8 }, (_, i) => `/design-${i + 1}.png`),
   },
   "interactive-game": {
@@ -23,7 +22,6 @@ const projectData = {
     category: "GAME DEVELOPMENT",
     description:
       "An immersive game development project focusing on engaging mechanics, beautiful environments, and a seamless user experience.",
-    // Updated to start at game-3 and end at game-9 (7 images total)
     images: Array.from({ length: 7 }, (_, i) => `/game-${i + 3}.png`),
   },
 };

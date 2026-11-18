@@ -3,7 +3,7 @@ import Navbar from "./components/Navbar";
 import BentoGrid from "./components/BentoGrid";
 import About from "./components/About";
 import Works from "./components/Works";
-import ProjectDetail from "./components/ProjectDetail"; // <-- Add this
+import ProjectDetail from "./components/ProjectDetail";
 import Credentials from "./components/Credentials";
 import Contact from "./components/Contact";
 import Services from "./components/Services";

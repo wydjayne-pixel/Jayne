@@ -103,7 +103,6 @@ const certificationsData = [
 
 const Credentials = () => {
   return (
-    // Removed overflow-hidden because it interferes with sticky positioning
     <div className="min-h-screen font-sans text-white selection:bg-blue-500/30">
       <div className="page-transition relative z-10 mx-auto w-full max-w-[1200px] px-5 pb-20 pt-6 sm:px-12 sm:pt-10">
         {/* Section heading */}
